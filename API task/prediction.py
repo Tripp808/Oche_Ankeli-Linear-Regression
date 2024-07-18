@@ -17,6 +17,11 @@ try:
 except FileNotFoundError:
     raise RuntimeError("Model file not found. Ensure 'model.pkl' is in the correct directory.")
 
+# Define the root endpoint
+@app.get("/", status_code=status.HTTP_200_OK)
+def read_root():
+    return {"message": "We welcome Oche and Marvin to the Wine Prediction API..cheers..hehe"}
+
 # Define the prediction endpoint
 @app.post("/predict", status_code=status.HTTP_200_OK)
 def predict(wine_features: WineFeatures):
