@@ -20,7 +20,7 @@ except FileNotFoundError:
 # Define the root endpoint
 @app.get("/", status_code=status.HTTP_200_OK)
 def read_root():
-    return {"message": "We welcome Oche and Marvin to the Wine Prediction API..cheers..hehe"}
+    return {"message": "A wine toast to the summative...cheers. Hehe"}
 
 # Define the prediction endpoint
 @app.post("/predict", status_code=status.HTTP_200_OK)
