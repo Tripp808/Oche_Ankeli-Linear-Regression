@@ -15,31 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Wine Prediction App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: Colors.white,
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.white.withOpacity(0.8),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide.none,
-          ),
-        ),
       ),
-      darkTheme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.grey[800]!.withOpacity(0.8),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
-      themeMode: ThemeMode.system,
       home: const PredictionPage(),
     );
   }
@@ -95,7 +71,7 @@ class _PredictionPageState extends State<PredictionPage> {
           // Background image
           Positioned.fill(
             child: Image.asset(
-              'assets/wine-glass.jpg',
+              'assets/glass-wine.jpg',
               fit: BoxFit.cover,
             ),
           ),
@@ -127,6 +103,12 @@ class _PredictionPageState extends State<PredictionPage> {
                             'OD280/OD315 of diluted wines',
                             'Proline'
                           ][index],
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: BorderSide.none,
+                          ),
                         ),
                         keyboardType: TextInputType.number,
                         validator: (value) {
@@ -154,7 +136,7 @@ class _PredictionPageState extends State<PredictionPage> {
                   ),
                   const SizedBox(height: 20),
                   if (_prediction.isNotEmpty)
-                    Text('Prediction: $_prediction', style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
+                    Text('Prediction: $_prediction', style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 255, 255, 255), fontWeight: FontWeight.bold)),
                   if (_errorMessage.isNotEmpty)
                     Text('Error: $_errorMessage', style: const TextStyle(fontSize: 18, color: Colors.red)),
                 ],
