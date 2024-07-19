@@ -85,38 +85,51 @@ class _PredictionPageState extends State<PredictionPage> {
                   ...List.generate(13, (index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: TextFormField(
-                        controller: _controllers[index],
-                        decoration: InputDecoration(
-                          labelText: [
-                            'Alcohol',
-                            'Malic acid',
-                            'Ash',
-                            'Alcalinity of ash',
-                            'Magnesium',
-                            'Total phenols',
-                            'Flavanoids',
-                            'Nonflavanoid phenols',
-                            'Proanthocyanins',
-                            'Color intensity',
-                            'Hue',
-                            'OD280/OD315 of diluted wines',
-                            'Proline'
-                          ][index],
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.8),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                            borderSide: BorderSide.none,
+                      child: Stack(
+                        children: [
+                          TextFormField(
+                            controller: _controllers[index],
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white.withOpacity(0.8),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                            ),
+                            style: const TextStyle(fontSize: 16.0),
+                            keyboardType: TextInputType.number,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a value';
+                              }
+                              return null;
+                            },
                           ),
-                        ),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter a value';
-                          }
-                          return null;
-                        },
+                          Positioned(
+                            right: 10,
+                            top: 20,
+                            child: Text(
+                              [
+                                'Alcohol',
+                                'Malic acid',
+                                'Ash',
+                                'Alcalinity of ash',
+                                'Magnesium',
+                                'Total phenols',
+                                'Flavanoids',
+                                'Nonflavanoid phenols',
+                                'Proanthocyanins',
+                                'Color intensity',
+                                'Hue',
+                                'OD280/OD315 of diluted wines',
+                                'Proline'
+                              ][index],
+                              style: const TextStyle(color: Colors.red, fontSize: 16.0),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   }),
